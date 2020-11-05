@@ -1,0 +1,31 @@
+@mixin responsive-device($break-point) {
+  @if $break-point == xs {
+    @media only screen and(max-width: 600px) {
+      @content;
+    }
+  }
+
+  @if $break-point == sm {
+    @media only screen and(min-width: 600px) {
+      @content;
+    }
+  }
+
+  @if $break-point == md {
+    @media only screen and(min-width: 768px) {
+      @content;
+    }
+  }
+
+  @if $break-point == lg {
+    @media only screen and(min-width: 992px) {
+      @content;
+    }
+  }
+
+  @if $break-point == lx {
+    @media only screen and(min-width: 1200px) {
+      @content;
+    }
+  }
+}

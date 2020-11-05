@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: {
     main: path.resolve(__dirname, "src/index.js"),
+    bar: path.resolve(__dirname, "src/assets/js/toolbar.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -40,7 +41,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: path.resolve(__dirname, "src/index.html"),
-      chunks: ["main"],
+      chunks: ["main", "bar"],
     }),
   ],
   devtool: "source-map",

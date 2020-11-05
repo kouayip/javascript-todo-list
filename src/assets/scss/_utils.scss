@@ -1,0 +1,149 @@
+.layout-grid-container {
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  grid-template-areas:
+    "header-grid-component"
+    "main-grid-component"
+    "footer-grid-component";
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: auto;
+
+  & > .header-component {
+    grid-area: header-grid-component;
+  }
+
+  & > .main-component {
+    grid-area: main-grid-component;
+  }
+
+  & > .footer-component {
+    grid-area: footer-grid-component;
+  }
+}
+
+.flx-container {
+  max-width: 1400px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 4rem;
+  @include responsive-device(xs) {
+    padding: 0 2rem;
+  }
+
+  & > .flx-row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+
+    & > .flx-col {
+      flex: 0 0 auto;
+    }
+
+    & > .flx-col- {
+      flex: 1;
+    }
+  }
+}
+
+nav.nav-menu {
+  display: flex;
+  justify-content: flex-end;
+  & > ul.nav-menu-list {
+    display: flex;
+    @include responsive-device(xs) {
+      display: none;
+    }
+    & > li.nav-item {
+      margin-left: 3rem;
+
+      & > a.nav-link {
+        font-size: 1.4rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        &:hover {
+          opacity: 0.8;
+          transition: all 0.2s;
+        }
+      }
+    }
+  }
+  .nav-menu-toggle {
+    cursor: pointer;
+    z-index: 99999;
+    font-size: 2rem;
+    & > {
+      .toggle-icon-open {
+        display: none;
+      }
+      .toggle-icon-close {
+        display: none;
+      }
+      @include responsive-device(xs) {
+        .toggle-icon-open {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &.open {
+    & > ul.nav-menu-list {
+      @include responsive-device(xs) {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        z-index: 9999;
+        flex-direction: column;
+        background: white;
+        padding: 8rem 2rem 0 2rem;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        right: 0;
+        animation: moveOver 0.2s ease-in-out;
+        animation-fill-mode: forwards;
+      }
+      & > li.nav-item {
+        @include responsive-device(xs) {
+          margin-left: 0;
+          margin-bottom: 3rem;
+        }
+        & > a.nav-link {
+          @include responsive-device(xs) {
+            display: inline-block;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid black;
+            transition: transform 0.3s ease-in-out;
+            &:hover {
+              transform: scale(1.5);
+            }
+          }
+        }
+      }
+    }
+
+    @include responsive-device(xs) {
+      .toggle-icon-open {
+        display: none;
+      }
+      .toggle-icon-close {
+        display: block;
+      }
+    }
+  }
+}
+
+//Annimation
+@keyframes moveOver {
+  to {
+    transform: translateY(0%);
+  }
+  from {
+    transform: translateY(-100%);
+  }
+}
