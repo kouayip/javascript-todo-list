@@ -1,0 +1,250 @@
+/// Grid layout container
+///
+/// @Use
+///   .element {
+///       @include sfy-layout-container;
+///   }
+///
+@mixin sfy-layout-container {
+  &-grid-container {
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    grid-template-areas:
+      "header-grid-component"
+      "main-grid-component"
+      "footer-grid-component";
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: auto;
+
+    & > .header-component {
+      grid-area: header-grid-component;
+    }
+
+    & > .main-component {
+      grid-area: main-grid-component;
+    }
+
+    & > .footer-component {
+      grid-area: footer-grid-component;
+    }
+  }
+}
+
+///
+///
+///
+///
+///
+@mixin sfy-flex-container(
+  $max-size: 1400px,
+  $container-offset: 40px,
+  $col-count: 12,
+  $col-offset: 10px
+) {
+  &-container {
+    max-width: #{$max-size};
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 $container-offset;
+    @include responsive-device(xs) {
+      padding: 0 $container-offset / 2;
+    }
+  }
+
+  &-row {
+    display: flex;
+    flex-flow: row wrap;
+    height: inherit;
+  }
+
+  @include sfy-flex-col($col-count, $col-offset);
+
+  @include sfy-flex-align;
+
+  &-wrap {
+    flex-wrap: wrap;
+  }
+
+  &-nowrap {
+    flex-wrap: nowrap;
+  }
+}
+
+///
+///
+///
+///
+@mixin sfy-flex-col($col-count: 12, $col-offset: 10px) {
+  &-col {
+    flex: 0 0 auto;
+    padding: #{$col-offset} 0;
+  }
+
+  &-col- {
+    flex: 1;
+    padding: #{$col-offset} 0;
+  }
+
+  @for $i from 1 through $col-count {
+    &-col-#{$i} {
+      padding: #{$col-offset} 0;
+      flex: 0 0 100% / $col-count * $i;
+    }
+  }
+}
+
+@mixin sfy-flex-align {
+  &-ctr {
+    justify-content: center;
+    align-items: center;
+  }
+  &-just {
+    &-ctr {
+      justify-content: center;
+    }
+  }
+  &-algn {
+    &-ctr {
+      align-items: center;
+    }
+  }
+}
+///
+///
+///
+///
+///
+///
+@mixin sfy-text {
+  &-algn {
+    &-ctr {
+      text-align: center;
+    }
+  }
+}
+
+///
+///
+///
+///
+///
+@mixin sfy-margin(
+  $count: 4,
+  $mt: true,
+  $mb: true,
+  $ml: true,
+  $mr: true,
+  $mx: true,
+  $my: true
+) {
+  @for $i from 0 through $count {
+    @if $mt {
+      &-tp-#{$i} {
+        margin-top: #{$i}rem;
+      }
+    }
+    @if $mb {
+      &-bm-#{$i} {
+        margin-bottom: #{$i}rem;
+      }
+    }
+    @if $ml {
+      &-lt-#{$i} {
+        margin-left: #{$i}rem;
+      }
+    }
+    @if $mr {
+      &-rt-#{$i} {
+        margin-right: #{$i}rem;
+      }
+    }
+    @if $mx {
+      &x-#{$i} {
+        margin: 0 #{$i}rem;
+      }
+    }
+    @if $my {
+      &y-#{$i} {
+        margin: #{$i}rem 0;
+      }
+    }
+  }
+}
+
+///
+///
+///
+///
+///
+@mixin sfy-padding(
+  $count: 4,
+  $pt: true,
+  $pb: true,
+  $pl: true,
+  $pr: true,
+  $px: true,
+  $py: true
+) {
+  @for $i from 0 through $count {
+    @if $pt {
+      &-tp-#{$i} {
+        padding-top: #{$i}rem;
+      }
+    }
+    @if $pb {
+      &-bm-#{$i} {
+        padding-bottom: #{$i}rem;
+      }
+    }
+    @if $pl {
+      &-lt-#{$i} {
+        padding-left: #{$i}rem;
+      }
+    }
+    @if $pr {
+      &-rt-#{$i} {
+        padding-right: #{$i}rem;
+      }
+    }
+    @if $px {
+      &x-#{$i} {
+        padding: 0 #{$i}rem;
+      }
+    }
+    @if $py {
+      &y-#{$i} {
+        padding: #{$i}rem 0;
+      }
+    }
+  }
+}
+
+///
+///
+///
+///
+///
+///
+@mixin sfy-buttom($offsetY: 10px, $offsetX: 20px, $radius: 3px) {
+  padding: #{$offsetY} #{$offsetX};
+  border-radius: #{$radius};
+  display: inline-block;
+  @content;
+}
+
+///
+///
+///
+///
+///
+///
+@mixin sfy-display {
+  &-none {
+    display: none;
+  }
+  &-block {
+    display: block;
+  }
+}

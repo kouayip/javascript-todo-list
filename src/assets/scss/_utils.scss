@@ -1,57 +1,77 @@
-.layout-grid-container {
-  display: grid;
-  width: 100%;
-  height: 100vh;
-  grid-template-areas:
-    "header-grid-component"
-    "main-grid-component"
-    "footer-grid-component";
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: auto;
+@import "stylfy-core";
 
-  & > .header-component {
-    grid-area: header-grid-component;
-  }
+//Layout
+.layout {
+  @include sfy-layout-container;
+}
 
-  & > .main-component {
-    grid-area: main-grid-component;
-  }
-
-  & > .footer-component {
-    grid-area: footer-grid-component;
+//Flex
+.flx {
+  @include sfy-flex-container;
+  @include responsive-device(xs) {
+    &-xs {
+      @include sfy-flex-col;
+      @include sfy-flex-align;
+    }
+    @include responsive-device(xs) {
+      &-sm {
+        @include sfy-text;
+      }
+    }
   }
 }
 
-.flx-container {
-  max-width: 1400px;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  padding: 0 4rem;
+//Text
+.txt {
+  @include sfy-text;
   @include responsive-device(xs) {
-    padding: 0 2rem;
-  }
-
-  & > .flx-row {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    height: inherit;
-
-    & > .flx-col {
-      flex: 0 0 auto;
-    }
-
-    & > .flx-col- {
-      flex: 1;
+    &-xs {
+      @include sfy-text;
     }
   }
+}
+
+//Display
+.display {
+  @include sfy-display;
+  @include responsive-device(lg) {
+    &-lg {
+      @include sfy-display;
+    }
+  }
+}
+
+//Btn
+.btn {
+  @include sfy-buttom {
+    &-primary {
+      background: #00a8ff;
+      color: white;
+    }
+  }
+}
+
+//Margin
+.mg {
+  @include sfy-margin;
+}
+
+//Padding
+.pd {
+  @include sfy-padding;
 }
 
 nav.nav-menu {
   display: flex;
-  justify-content: flex-end;
+  @include responsive-device(xs) {
+    justify-content: flex-end;
+  }
+  @include responsive-device(sm) {
+    justify-content: center;
+  }
+  @include responsive-device(md) {
+    justify-content: flex-end;
+  }
   & > ul.nav-menu-list {
     display: flex;
     @include responsive-device(xs) {

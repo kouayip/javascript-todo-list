@@ -19,7 +19,7 @@ h3,
 h4,
 h5,
 h6 {
-  border-bottom: 1rem;
+  margin-bottom: 1rem;
   line-height: 1.2;
 }
 
@@ -54,4 +54,8 @@ a {
 
 ul {
   list-style: none;
+}
+
+img {
+  max-width: 100%;
 }

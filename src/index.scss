@@ -1,0 +1,23 @@
+@import "./assets/scss/media-queries";
+
+.banner-background {
+  height: 40rem;
+  width: 40rem;
+}
+
+.banner-title {
+  font-size: 6rem;
+  letter-spacing: 2px;
+  @include responsive-device(xs) {
+    font-size: 4rem;
+  }
+}
+
+.banner-desc {
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  @include responsive-device(xs) {
+    font-size: 1.6rem;
+  }
+}
