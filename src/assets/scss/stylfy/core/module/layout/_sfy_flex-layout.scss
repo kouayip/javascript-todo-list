@@ -1,0 +1,71 @@
+///
+///
+///
+@mixin sfy-flex-col($col-count: 12, $col-offset: 10px, $precision: false) {
+  &-col {
+    flex: 0 0 auto;
+    padding: #{$col-offset} 0;
+  }
+
+  &-col- {
+    flex: 1;
+    padding: #{$col-offset} 0;
+  }
+
+  @for $i from 1 through $col-count {
+    &-col-#{$i} {
+      padding: #{$col-offset} 0;
+      $number: 100% / $col-count * $i;
+      @if $precision {
+        flex: 0 0 round($number);
+      } @else {
+        flex: 0 0 $number;
+      }
+    }
+  }
+}
+
+///
+///
+///
+@mixin sfy-flex-align {
+  &-ctr {
+    justify-content: center;
+    align-items: center;
+  }
+  &-just {
+    &-ctr {
+      justify-content: center;
+    }
+  }
+  &-algn {
+    &-ctr {
+      align-items: center;
+    }
+  }
+}
+
+///
+///
+///
+@mixin sfy-flex-layout($col-count: 12, $col-offset: 10px, $precision: false) {
+  & {
+    &-row {
+      display: flex;
+      flex-flow: row wrap;
+      height: inherit;
+    }
+
+    @include sfy-flex-col($col-count, $col-offset, $precision);
+
+    @include sfy-flex-align;
+
+    &-wrap {
+      flex-wrap: wrap;
+    }
+
+    &-nowrap {
+      flex-wrap: nowrap;
+    }
+  }
+}

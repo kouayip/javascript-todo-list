@@ -1,0 +1,20 @@
+///
+///
+///
+@mixin sfy-container(
+  $max-size: 1400px,
+  $container-offset: 40px,
+  $col-count: 12,
+  $col-offset: 10px
+) {
+  & {
+    max-width: #{$max-size};
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 $container-offset;
+    @include responsive-device(xs) {
+      padding: 0 $container-offset / 2;
+    }
+  }
+}

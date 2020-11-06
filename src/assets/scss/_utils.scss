@@ -2,12 +2,17 @@
 
 //Layout
 .layout {
-  @include sfy-layout-container;
+  @include sfy-simple-grid-layout;
+}
+
+//Container
+.container {
+  @include sfy-container;
 }
 
 //Flex
 .flx {
-  @include sfy-flex-container;
+  @include sfy-flex-layout;
   @include responsive-device(xs) {
     &-xs {
       @include sfy-flex-col($precision: true);
@@ -69,6 +74,7 @@ nav.nav-menu {
   }
   & > ul.nav-menu-list {
     display: flex;
+    align-items: center;
     @include responsive-device(xs) {
       display: none;
     }

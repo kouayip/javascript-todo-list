@@ -1,0 +1,39 @@
+///
+///
+///
+///
+@mixin sfy-grid-template($template) {
+  &-grid-container {
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    grid-template-areas: $template;
+    @content;
+  }
+}
+
+///
+///
+///
+@mixin sfy-simple-grid-layout(
+  $header-size: auto,
+  $main-size: 1fr,
+  $footer-size: auto
+) {
+  @include sfy-grid-template("header-area" "main-area" "footer-area") {
+    grid-template-rows: #{$header-size} #{$main-size} #{$footer-size};
+    grid-template-columns: auto;
+
+    & > .header-area {
+      grid-area: header-area;
+    }
+
+    & > .main-area {
+      grid-area: main-area;
+    }
+
+    & > .footer-area {
+      grid-area: footer-area;
+    }
+  }
+}

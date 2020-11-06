@@ -1,0 +1,9 @@
+///
+///
+///
+@mixin sfy-buttom($offsetY: 10px, $offsetX: 20px, $radius: 3px) {
+  padding: #{$offsetY} #{$offsetX};
+  border-radius: #{$radius};
+  display: inline-block;
+  @content;
+}
