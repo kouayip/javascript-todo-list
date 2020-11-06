@@ -1,0 +1,41 @@
+@import "sfy-padding_";
+
+///
+///
+///
+@mixin sfy-padding(
+  $all: true,
+  $count: $padding-count,
+  $pd: false,
+  $pd-tp: false,
+  $pd-bm: false,
+  $pd-lt: false,
+  $pd-rt: false,
+  $pd-x: false,
+  $pd-y: false,
+  $unit: rem
+) {
+  @for $i from 0 through $count {
+    @if $all or $pd {
+      @include sfy-pd(#{$i}, $unit);
+    }
+    @if $all or $pd-tp {
+      @include sfy-pd-tp(#{$i}, $unit);
+    }
+    @if $all or $pd-bm {
+      @include sfy-pd-bm(#{$i}, $unit);
+    }
+    @if $all or $pd-lt {
+      @include sfy-pd-lt(#{$i}, $unit);
+    }
+    @if $all or $pd-rt {
+      @include sfy-pd-rt(#{$i}, $unit);
+    }
+    @if $all or $pd-x {
+      @include sfy-pd-x(#{$i}, $unit);
+    }
+    @if $all or $pd-y {
+      @include sfy-pd-y(#{$i}, $unit);
+    }
+  }
+}

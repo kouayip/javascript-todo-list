@@ -1,4 +1,4 @@
-@import "stylfy-core";
+@import "./stylfy/stylfy-style";
 
 //Layout
 .layout {
@@ -10,13 +10,8 @@
   @include sfy-flex-container;
   @include responsive-device(xs) {
     &-xs {
-      @include sfy-flex-col;
+      @include sfy-flex-col($precision: true);
       @include sfy-flex-align;
-    }
-    @include responsive-device(xs) {
-      &-sm {
-        @include sfy-text;
-      }
     }
   }
 }

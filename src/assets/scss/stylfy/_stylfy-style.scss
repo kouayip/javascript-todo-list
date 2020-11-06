@@ -1,3 +1,6 @@
+@import "./config/stylfy-config";
+@import "./core/module/padding/sfy-padding";
+
 /// Grid layout container
 ///
 /// @Use
@@ -40,7 +43,8 @@
   $max-size: 1400px,
   $container-offset: 40px,
   $col-count: 12,
-  $col-offset: 10px
+  $col-offset: 10px,
+  $precision: false
 ) {
   &-container {
     max-width: #{$max-size};
@@ -59,7 +63,7 @@
     height: inherit;
   }
 
-  @include sfy-flex-col($col-count, $col-offset);
+  @include sfy-flex-col($col-count, $col-offset, $precision);
 
   @include sfy-flex-align;
 
@@ -76,7 +80,7 @@
 ///
 ///
 ///
-@mixin sfy-flex-col($col-count: 12, $col-offset: 10px) {
+@mixin sfy-flex-col($col-count: 12, $col-offset: 10px, $precision: false) {
   &-col {
     flex: 0 0 auto;
     padding: #{$col-offset} 0;
@@ -90,7 +94,12 @@
   @for $i from 1 through $col-count {
     &-col-#{$i} {
       padding: #{$col-offset} 0;
-      flex: 0 0 100% / $col-count * $i;
+      $number: 100% / $col-count * $i;
+      @if $precision {
+        flex: 0 0 round($number);
+      } @else {
+        flex: 0 0 $number;
+      }
     }
   }
 }
@@ -168,54 +177,6 @@
     @if $my {
       &y-#{$i} {
         margin: #{$i}rem 0;
-      }
-    }
-  }
-}
-
-///
-///
-///
-///
-///
-@mixin sfy-padding(
-  $count: 4,
-  $pt: true,
-  $pb: true,
-  $pl: true,
-  $pr: true,
-  $px: true,
-  $py: true
-) {
-  @for $i from 0 through $count {
-    @if $pt {
-      &-tp-#{$i} {
-        padding-top: #{$i}rem;
-      }
-    }
-    @if $pb {
-      &-bm-#{$i} {
-        padding-bottom: #{$i}rem;
-      }
-    }
-    @if $pl {
-      &-lt-#{$i} {
-        padding-left: #{$i}rem;
-      }
-    }
-    @if $pr {
-      &-rt-#{$i} {
-        padding-right: #{$i}rem;
-      }
-    }
-    @if $px {
-      &x-#{$i} {
-        padding: 0 #{$i}rem;
-      }
-    }
-    @if $py {
-      &y-#{$i} {
-        padding: #{$i}rem 0;
       }
     }
   }

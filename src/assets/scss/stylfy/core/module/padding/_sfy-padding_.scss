@@ -1,0 +1,62 @@
+///
+///
+///
+@mixin sfy-pd($value: 1, $unit: rem) {
+  &-#{$value} {
+    padding: #{$value}#{$unit} #{$value}#{$unit};
+  }
+}
+
+///
+///
+///
+@mixin sfy-pd-tp($value: 1, $unit: rem) {
+  &-tp-#{$value} {
+    padding-top: #{$value}#{$unit};
+  }
+}
+
+///
+///
+///
+@mixin sfy-pd-bm($value: 1, $unit: rem) {
+  &-bm-#{$value} {
+    padding-bottom: #{$value}#{$unit};
+  }
+}
+
+///
+///
+///
+@mixin sfy-pd-lt($value: 1, $unit: rem) {
+  &-lt-#{$value} {
+    padding-left: #{$value}#{$unit};
+  }
+}
+
+///
+///
+///
+@mixin sfy-pd-rt($value: 1, $unit: rem) {
+  &-rt-#{$value} {
+    padding-right: #{$value}#{$unit};
+  }
+}
+
+///
+///
+///
+@mixin sfy-pd-x($value: 1, $unit: rem) {
+  &-x-#{$value} {
+    padding: 0 #{$value}#{$unit};
+  }
+}
+
+///
+///
+///
+@mixin sfy-pd-y($value: 1, $unit: rem) {
+  &-y-#{$value} {
+    padding: #{$value}#{$unit} 0;
+  }
+}
