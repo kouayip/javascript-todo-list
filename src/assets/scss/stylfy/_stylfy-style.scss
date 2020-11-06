@@ -1,5 +1,6 @@
 @import "./config/stylfy-config";
 @import "./core/module/padding/sfy-padding";
+@import "./core/module/margin/sfy-margin";
 
 /// Grid layout container
 ///
@@ -130,54 +131,6 @@
   &-algn {
     &-ctr {
       text-align: center;
-    }
-  }
-}
-
-///
-///
-///
-///
-///
-@mixin sfy-margin(
-  $count: 4,
-  $mt: true,
-  $mb: true,
-  $ml: true,
-  $mr: true,
-  $mx: true,
-  $my: true
-) {
-  @for $i from 0 through $count {
-    @if $mt {
-      &-tp-#{$i} {
-        margin-top: #{$i}rem;
-      }
-    }
-    @if $mb {
-      &-bm-#{$i} {
-        margin-bottom: #{$i}rem;
-      }
-    }
-    @if $ml {
-      &-lt-#{$i} {
-        margin-left: #{$i}rem;
-      }
-    }
-    @if $mr {
-      &-rt-#{$i} {
-        margin-right: #{$i}rem;
-      }
-    }
-    @if $mx {
-      &x-#{$i} {
-        margin: 0 #{$i}rem;
-      }
-    }
-    @if $my {
-      &y-#{$i} {
-        margin: #{$i}rem 0;
-      }
     }
   }
 }

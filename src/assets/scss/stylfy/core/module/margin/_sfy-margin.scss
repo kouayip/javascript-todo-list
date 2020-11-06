@@ -1,0 +1,41 @@
+@import "sfy-margin_";
+
+///
+///
+///
+@mixin sfy-margin(
+  $all: true,
+  $count: $margin-count,
+  $mg: false,
+  $mg-tp: false,
+  $mg-bm: false,
+  $mg-lt: false,
+  $mg-rt: false,
+  $mg-x: false,
+  $mg-y: false,
+  $unit: rem
+) {
+  @for $i from 0 through $count {
+    @if $all or $mg {
+      @include sfy-mg(#{$i}, $unit);
+    }
+    @if $all or $mg-tp {
+      @include sfy-mg-tp(#{$i}, $unit);
+    }
+    @if $all or $mg-bm {
+      @include sfy-mg-bm(#{$i}, $unit);
+    }
+    @if $all or $mg-lt {
+      @include sfy-mg-lt(#{$i}, $unit);
+    }
+    @if $all or $mg-rt {
+      @include sfy-mg-rt(#{$i}, $unit);
+    }
+    @if $all or $mg-x {
+      @include sfy-mg-x(#{$i}, $unit);
+    }
+    @if $all or $mg-y {
+      @include sfy-mg-y(#{$i}, $unit);
+    }
+  }
+}
