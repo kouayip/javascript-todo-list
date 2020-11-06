@@ -8,9 +8,7 @@
 header {
   background: #ffffff;
   position: relative;
-  @include responsive-device(md) {
-    height: 5.5rem;
-  }
+  height: 5.5rem;
   &::after {
     content: "";
     position: absolute;
