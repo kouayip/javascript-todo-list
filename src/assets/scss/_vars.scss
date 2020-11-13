@@ -4,4 +4,10 @@
   --font-family-montserrat: "Montserrat", sans-serif;
   --font-family-Syne-mono: "Syne Mono", monospace;
   --text-color: #2f3640;
+  --background-elevation: linear-gradient(
+    rgba(9, 30, 66, 0.13) 0px,
+    rgba(9, 30, 66, 0.13) 1px,
+    rgba(9, 30, 66, 0.08) 1px,
+    rgba(9, 30, 66, 0) 4px
+  );
 }

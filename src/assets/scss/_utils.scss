@@ -61,99 +61,125 @@
   @include sfy-padding;
 }
 
-nav.nav-menu {
-  display: flex;
-  @include responsive-device(xs) {
-    justify-content: flex-end;
-  }
-  @include responsive-device(sm) {
-    justify-content: center;
-  }
-  @include responsive-device(md) {
-    justify-content: flex-end;
-  }
-  & > ul.nav-menu-list {
-    display: flex;
-    align-items: center;
-    @include responsive-device(xs) {
-      display: none;
+@mixin header-toolbar($background) {
+  & {
+    background: #{$background};
+    position: relative;
+    height: 5.5rem;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      height: 4px;
+      background: linear-gradient(
+        rgba(9, 30, 66, 0.13) 0px,
+        rgba(9, 30, 66, 0.13) 1px,
+        rgba(9, 30, 66, 0.08) 1px,
+        rgba(9, 30, 66, 0) 4px
+      );
     }
-    & > li.nav-item {
-      margin-left: 3rem;
 
-      & > a.nav-link {
-        font-size: 1.4rem;
-        font-weight: 500;
-        letter-spacing: 1px;
-        &:hover {
-          opacity: 0.8;
-          transition: all 0.2s;
-        }
-      }
+    .header-brand-text {
+      font-size: 2rem;
+      font-family: var(--font-family-Syne-mono);
     }
-  }
-  .nav-menu-toggle {
-    cursor: pointer;
-    z-index: 99999;
-    font-size: 2rem;
-    & > {
-      .toggle-icon-open {
-        display: none;
-      }
-      .toggle-icon-close {
-        display: none;
-      }
-      @include responsive-device(xs) {
-        .toggle-icon-open {
-          display: block;
-        }
-      }
-    }
-  }
 
-  &.open {
-    & > ul.nav-menu-list {
+    nav.nav-menu {
+      display: flex;
       @include responsive-device(xs) {
+        justify-content: flex-end;
+      }
+      @include responsive-device(sm) {
+        justify-content: center;
+      }
+      @include responsive-device(md) {
+        justify-content: flex-end;
+      }
+      & > ul.nav-menu-list {
         display: flex;
         align-items: center;
-        position: absolute;
-        z-index: 9999;
-        flex-direction: column;
-        background: white;
-        padding: 8rem 2rem 0 2rem;
-        width: 100%;
-        height: 100vh;
-        top: 0;
-        right: 0;
-        animation: moveOver 0.2s ease-in-out;
-        animation-fill-mode: forwards;
-      }
-      & > li.nav-item {
         @include responsive-device(xs) {
-          margin-left: 0;
-          margin-bottom: 3rem;
+          display: none;
         }
-        & > a.nav-link {
-          @include responsive-device(xs) {
-            display: inline-block;
-            font-size: 1.6rem;
-            text-transform: uppercase;
-            border-bottom: 1px solid black;
-            transition: transform 0.3s ease-in-out;
+        & > li.nav-item {
+          margin-left: 3rem;
+          & > a.nav-link {
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: 1px;
             &:hover {
-              transform: scale(1.5);
+              opacity: 0.8;
+              transition: all 0.2s;
             }
           }
         }
       }
-    }
-
-    @include responsive-device(xs) {
-      .toggle-icon-open {
-        display: none;
+      .nav-menu-toggle {
+        cursor: pointer;
+        z-index: 99999;
+        font-size: 2rem;
+        & > {
+          .toggle-icon-open {
+            display: none;
+          }
+          .toggle-icon-close {
+            display: none;
+          }
+          @include responsive-device(xs) {
+            .toggle-icon-open {
+              display: block;
+            }
+          }
+        }
       }
-      .toggle-icon-close {
-        display: block;
+
+      &.open {
+        & > ul.nav-menu-list {
+          @include responsive-device(xs) {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            z-index: 9999;
+            flex-direction: column;
+            background: white;
+            padding: 8rem 2rem 0 2rem;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            right: 0;
+            animation: moveOver 0.2s ease-in-out;
+            animation-fill-mode: forwards;
+          }
+          & > li.nav-item {
+            @include responsive-device(xs) {
+              margin-left: 0;
+              margin-bottom: 3rem;
+            }
+            & > a.nav-link {
+              @include responsive-device(xs) {
+                display: inline-block;
+                font-size: 1.6rem;
+                text-transform: uppercase;
+                border-bottom: 1px solid black;
+                transition: transform 0.3s ease-in-out;
+                &:hover {
+                  transform: scale(1.5);
+                }
+              }
+            }
+          }
+        }
+
+        @include responsive-device(xs) {
+          .toggle-icon-open {
+            display: none;
+          }
+          .toggle-icon-close {
+            display: block;
+          }
+        }
       }
     }
   }
